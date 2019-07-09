@@ -46,7 +46,8 @@ node {
         def build_url= ${env.BUILD_URL}
         
         mail bcc: '', 
-        body: subject - build_url'''To view the results of build-''', 
+        body: subject,
+        body: build_url,
         subject: subject, 
         to: 'manee2k6@gmail.com'
    }
