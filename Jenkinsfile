@@ -45,13 +45,10 @@ node {
         def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER}- ${currentBuild.result}"
         def build_url= ${env.BUILD_URL}
         
-        //mail bcc: '', 
-        //body: subject,
-        //subject: subject, 
-        //to: 'manee2k6@gmail.com'
-        emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
-                recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                subject: "Jenkins Build- ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}- ${currentBuild.result}"
+        mail bcc: '', body: subject -''':
+             Check console output at ${env.BUILD_URL} to view the results.''',
+             subject: subject, 
+             to: 'manee2k6@gmail.com'
    }
    
 }
