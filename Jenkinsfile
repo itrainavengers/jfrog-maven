@@ -45,8 +45,9 @@ node {
         def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER}- ${currentBuild.result}" 
         
         mail bcc: '', body: subject -''':
-        Check console output at $BUILD_URL to view the results.''', 
-        cc: '', from: '', replyTo: '', subject: subject, to: 'manee2k6@gmail.com'
+        Check console output at ${env.BUILD_URL} to view the results.''', 
+        subject: subject, 
+        to: 'manee2k6@gmail.com'
    }
    
 }
