@@ -2,6 +2,7 @@ node {
     def server = Artifactory.server('itrainavenger.jfrog.io')
     def buildInfo = Artifactory.newBuildInfo()
     def rtMaven = Artifactory.newMavenBuild()
+    def jobName = currentBuild.fullDisplayName
     
     stage ('Checkout & Build') {
         git url: 'https://github.com/itrainavengers/jfrog-maven.git'
@@ -42,8 +43,9 @@ node {
     stage('Status Notification'){
         def mailRecipients = "manee2k6@gmail.com"
         def jobName = currentBuild.fullDisplayName
-        mail bcc: '', body: '''$jobName - Build # $BUILD_NUMBER - $BUILD_STATUS:
-       Check console output at $BUILD_URL to view the results.''', cc: '', from: '', replyTo: '', subject: 'jfrog-maven - Build # $BUILD_NUMBER - $BUILD_STATUS', to: 'manee2k6@gmail.com'
+        mail bcc: '', body: jobName -'''Build # $BUILD_NUMBER - $BUILD_STATUS:
+        Check console output at $BUILD_URL to view the results.''', 
+        cc: '', from: '', replyTo: '', subject: jobName-'Build # $BUILD_NUMBER - $BUILD_STATUS', to: 'manee2k6@gmail.com'
    }
    
 }
