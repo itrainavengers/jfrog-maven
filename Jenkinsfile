@@ -43,7 +43,7 @@ node {
         def mailRecipients = "manee2k6@gmail.com"
         def jobName = currentBuild.fullDisplayName
         mail bcc: '', body: '''$jobName - Build # $BUILD_NUMBER - $BUILD_STATUS:
-       Check console output at $BUILD_URL to view the results.''', cc: '', from: '', replyTo: '', subject: 'jfrog-maven - Build # $BUILD_NUMBER - $BUILD_STATUS', to: '$mailRecipients'
+       Check console output at $BUILD_URL to view the results.''', cc: '', from: '', replyTo: '', subject: 'jfrog-maven - Build # $BUILD_NUMBER - $BUILD_STATUS', to: 'manee2k6@gmail.com'
    }
    
 }
