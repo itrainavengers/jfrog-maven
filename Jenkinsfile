@@ -15,7 +15,7 @@ node {
     stage('SonarQube Analysis') {
         //rtMaven.run pom: 'maven-example/pom.xml', goals: 'clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=pattabhi -Dsonar.login=df5bb81bae9ba310d6a38135b957227ba6ecd32c '
      
-          
+         
       }
     
     stage ('Artifactory configuration') {
@@ -37,5 +37,12 @@ node {
         
     stage ('Publish build info') {
         server.publishBuildInfo buildInfo
+    }
+    
+    stage('Build status'){
+        mail bcc: '', body: '''Welcome to Jenkins Job status
+
+          Thanks
+        Build Team''', cc: 'ramesh.thadivada@gmail.com', from: '', replyTo: '', subject: 'Jenkins Job Status', to: 'ramesh.thadivada@gmail.com'
     }
 }
