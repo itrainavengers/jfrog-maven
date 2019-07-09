@@ -39,10 +39,7 @@ node {
         server.publishBuildInfo buildInfo
     }
     
-    stage('Build status'){
-        mail bcc: '', body: '''Welcome to Jenkins Job status
-
-          Thanks
-        Build Team''', cc: 'ramesh.thadivada@gmail.com', from: '', replyTo: '', subject: 'Jenkins Job Status', to: 'ramesh.thadivada@gmail.com'
+    stage('Status Notification'){
+       
     }
 }
