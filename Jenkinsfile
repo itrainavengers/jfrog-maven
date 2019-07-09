@@ -47,7 +47,7 @@ node {
         mail bcc: '',
              to: 'manee2k6@gmail.com',
              subject: subject,
-             body: "${env.BUILD_URL} has result ${currentBuild.result}"
+             body: "Build status for: ${env.BUILD_NUMBER}  Status:${currentBuild.result} Build URL: ${env.BUILD_URL}"
           
    }
    
