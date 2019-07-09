@@ -47,7 +47,6 @@ node {
         
         mail bcc: '', 
         body: subject,
-        body: build_url,
         subject: subject, 
         to: 'manee2k6@gmail.com'
    }
