@@ -43,8 +43,7 @@ node {
     stage('Status Notification'){
         def mailRecipients = "manee2k6@gmail.com"
         def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER}- ${currentBuild.result}"
-        def build_url= ${env.BUILD_URL}
-        
+       
         mail bcc: '', body: subject -''':
              Check console output at ${env.BUILD_URL} to view the results.''',
              subject: subject, 
