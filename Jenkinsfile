@@ -44,10 +44,11 @@ node {
         def mailRecipients = "manee2k6@gmail.com"
         def subject = "${env.JOB_NAME} - Build #${env.BUILD_NUMBER}- ${currentBuild.result}"
        
-        mail bcc: '', body: subject -''':
-             Check console output at ${env.BUILD_URL} to view the results.''',
-             subject: subject, 
-             to: 'manee2k6@gmail.com'
+        mail bcc: '',
+             to: 'manee2k6@gmail.com',
+             subject: subject,
+             body: "${env.BUILD_URL} has result ${currentBuild.result}"
+          
    }
    
 }
