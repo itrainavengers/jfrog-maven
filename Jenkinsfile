@@ -43,5 +43,17 @@ node {
        mail bcc: '', body: '''jfrog-maven - Build # $BUILD_NUMBER - $BUILD_STATUS:
        Check console output at $BUILD_URL to view the results.''', cc: '', from: '', replyTo: '', subject: 'jfrog-maven - Build # $BUILD_NUMBER - $BUILD_STATUS', to: 'manee2k6@gmail.com'
    }
+    
+    stage('Send email') {
+    def mailRecipients = "manee2k6@gmail.com"
+    def jobName = currentBuild.fullDisplayName
+
+    emailext body: '''${SCRIPT, template="groovy-html.template"}''',
+        mimeType: 'text/html',
+        subject: "[Jenkins] ${jobName}",
+        to: "${mailRecipients}",
+        replyTo: "${mailRecipients}",
+        recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+}
    
 }
