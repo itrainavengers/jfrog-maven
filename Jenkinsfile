@@ -10,7 +10,7 @@ node {
  
     stage ('Unit Test') {
         rtMaven.tool = 'Maven-3.6.1' // Tool name from Jenkins configuration
-        rtMaven.run pom: 'pom.xml', goals: 'clean test'
+        rtMaven.run pom: 'pom.xml', goals: 'clean compile test'
     }
     
     stage('SonarQube Analysis') {
